@@ -32,6 +32,8 @@ class cassandra(
     $saved_caches_directory     = $cassandra::params::saved_caches_directory,
     $initial_token              = $cassandra::params::initial_token,
     $num_tokens                 = $cassandra::params::num_tokens,
+    $authenticator              = $cassandra::params::authenticator,
+    $authorizer                 = $cassandra::params::authorizer,
     $seeds                      = $cassandra::params::seeds,
     $concurrent_reads           = $cassandra::params::concurrent_reads,
     $concurrent_writes          = $cassandra::params::concurrent_writes,
@@ -56,6 +58,8 @@ class cassandra(
     validate_string($partitioner)
     validate_string($initial_token)
     validate_string($endpoint_snitch)
+    validate_string($authenticator)
+    validate_string($authorizer)
 
     validate_re($start_rpc, '^(true|false)$')
     validate_re($start_native_transport, '^(true|false)$')
