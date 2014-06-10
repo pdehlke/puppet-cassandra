@@ -246,6 +246,16 @@ class cassandra::params {
         undef   => 256,
         default => $::cassandra_num_tokens,
     }
+    
+    $authenticator = $::cassandra_authenticator ? {
+        undef   => 'org.apache.cassandra.auth.AllowAllAuthenticator',
+        default => $::cassandra_authenticator,
+    }
+    
+    $authorizer = $::cassandra_authorizer ? {
+        undef   => 'org.apache.cassandra.auth.AllowAllAuthorizer',
+        default => $::cassandra_authorizer,
+    }
 
     $thread_stack_size = $::cassandra_thread_stack_size ? {
         undef   => 180,
